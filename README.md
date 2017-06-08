@@ -4,6 +4,9 @@ A simple Middleware for adding CSP headers and nonces in Django
 
 ## Usage
 
+Requires Django >=1.10
+
+Add it to MIDDLEWARE not MIDDLEWARE_CLASSES
 TODO
 
 ## Config Values
