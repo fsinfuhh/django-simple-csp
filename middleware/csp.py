@@ -21,9 +21,16 @@ class CSPMiddleware:
             policy['script-src'].append("'unsafe-inline'")
             policy['style-src'] = ["'self'", "'unsafe-inline'"]
 
+        if settings.get('CSP_REPORT_URL', ""):
+            policy['report-uri'] = [settings["CSP_REPORT_URL"]]
+
         policy_strings = []
         for kind, allowed in policy.items():
             policy_strings.append('{} {}'.format(kind, ' '.join(allowed)))
 
-        response['Content-Security-Policy'] = '; '.join(policy_strings)
+        if settings.get('CSP_REPORT_ONLY', True):
+            response['Content-Security-Policy-Report-Only'] = '; '.join(policy_strings)
+        else:
+            response['Content-Security-Policy'] = '; '.join(policy_strings)
+
         return response
