@@ -11,14 +11,16 @@ TODO
 
 ### CSS
 
+TODO: remove hash from the name of tag, include style tag
+
 Example use of hashed inline style:
 
     {% load csp %}
-    <style>{% scp_scc_hash %} /* have to be directly together, same as the closing tag, or else the hash is invalid */
+    <style>{% csp_css_hash %} /* have to be directly together, same as the closing tag, or else the hash is invalid */
         td.style-class {
             background-color: red;
         }
-    {% end_scp_scc_hash %}</style>
+    {% end_csp_css_hash %}</style>
 
 usage inside of style="..." attributes is not supported by chromium for now.
 
