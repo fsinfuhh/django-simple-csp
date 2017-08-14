@@ -8,14 +8,14 @@ from django.utils.crypto import get_random_string
 register = template.Library()
 
 
-@register.simple_tag(name='csp_nonce', takes_context=True)
-def csp_nonce(context=None):
+@register.simple_tag(name='csp_js_nonce', takes_context=True)
+def csp_js_nonce(context=None):
     nonce = get_random_string(16)
     if hasattr(context, 'request'):
         request = context['request']
-        if not hasattr(request, 'csp_nonces'):
-            request.csp_nonces = []
-        request.csp_nonces.append(nonce)
+        if not hasattr(request, 'csp_js_nonces'):
+            request.csp_js_nonces = []
+        request.csp_js_nonces.append(nonce)
     return nonce
 
 
@@ -38,7 +38,7 @@ class CspCssHash(template.Node):
                 request.csp_css_hashes = []
             if css_hash not in request.csp_css_hashes:
                 request.csp_css_hashes.append(css_hash)
-        return css
+        return "<style>{}</style>".format(css)
 
 
 register.tag('csp_css_hash', csp_css_hash)

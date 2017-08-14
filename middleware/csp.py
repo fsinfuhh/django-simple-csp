@@ -13,8 +13,8 @@ class CSPMiddleware:
             'script-src': ["'self'"],
             'style-src': ["'self'"],
         }
-        if hasattr(request, 'csp_nonces'):
-            policy['script-src'] += ["'nonce-{}'".format(nonce) for nonce in request.csp_nonces]
+        if hasattr(request, 'csp_js_nonces'):
+            policy['script-src'] += ["'nonce-{}'".format(nonce) for nonce in request.csp_js_nonces]
 
         if hasattr(request, 'csp_css_hashes'):
             policy['style-src'] += ["'{}'".format(css_hash) for css_hash in request.csp_css_hashes]

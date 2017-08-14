@@ -16,11 +16,11 @@ TODO: remove hash from the name of tag, include style tag
 Example use of hashed inline style:
 
     {% load csp %}
-    <style>{% csp_css_hash %} /* have to be directly together, same as the closing tag, or else the hash is invalid */
+    {% csp_css_hash %}
         td.style-class {
             background-color: red;
         }
-    {% end_csp_css_hash %}</style>
+    {% end_csp_css_hash %}
 
 usage inside of style="..." attributes is not supported by chromium for now.
 
@@ -30,12 +30,10 @@ usage inside of style="..." attributes is not supported by chromium for now.
 
 TODO: Change to hashes?
 
-TODO: Change Name
-
 Example:
 
     {% load csp %}
-    <script nonce={% csp_nonce %}>
+    <script nonce={% csp_js_nonce %}>
         alert("bla")
     </script>
 
