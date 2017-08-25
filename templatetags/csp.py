@@ -31,14 +31,13 @@ class CspCssHash(template.Node):
 
     def render(self, context):
         css = self.nodelist.render(context)
-        css_hash = "sha256-{}".format(b64encode(hashlib.sha256(css.encode('utf-8')).digest()).decode('utf-8'))
+        css_hash = "sha256-{}".format(b64encode(hashlib.sha256(css.encode()).digest()).decode())
         if hasattr(context, 'request'):
             request = context['request']
             if not hasattr(request, 'csp_css_hashes'):
-                request.csp_css_hashes = []
-            if css_hash not in request.csp_css_hashes:
-                request.csp_css_hashes.append(css_hash)
-        return "<style>{}</style>".format(css)
+                request.csp_css_hashes = set()
+            request.csp_css_hashes.add(css_hash)
+        return '<style type="text/css">{}</style>'.format(css)
 
 
 register.tag('csp_css_hash', csp_css_hash)
