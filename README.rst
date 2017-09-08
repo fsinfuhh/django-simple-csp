@@ -8,8 +8,38 @@ Usage
 
 Requires Django >=1.10
 
-Add it to MIDDLEWARE not MIDDLEWARE_CLASSES
-TODO: discribe in more detail
+Add it to the INSTALLED_APPS settings variable::
+
+    INSTALLED_APPS = [
+        ...
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        ...
+        'django-simple-csp'
+        ...
+    ]
+
+
+Add it to MIDDLEWARE (not MIDDLEWARE_CLASSES)::
+
+    MIDDLEWARE = [
+        ...
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        ...
+        'django-simple-csp.middleware.csp.CSPMiddleware',
+        ...
+    ]
+
 
 
 CSS
