@@ -13,6 +13,11 @@ class CSPMiddleware:
             'script-src': ["'self'"],
             'style-src': ["'self'"],
         }
+
+        policy['script-src'] += getattr(settings, 'CSP_ADDITIONAL_SCRIPT_SRC', [])
+        policy['style-src'] += getattr(settings, 'CSP_ADDITIONAL_STYLE_SRC', [])
+        policy['img-src'] += getattr(settings, 'CSP_ADDITIONAL_IMG_SRC', [])
+
         if hasattr(request, 'csp_js_nonces'):
             policy['script-src'] += ["'nonce-{}'".format(nonce) for nonce in request.csp_js_nonces]
 

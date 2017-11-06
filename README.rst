@@ -82,3 +82,12 @@ The URl CSP errors should be reportet to, set to "" if not used, or do not defin
 
 CSP_REPORT_ONLY = True
 Set the header to just report CSP errors do not enforce the CSP. Defaults to True.
+
+CSP_ADDITIONAL_SCRIPT_SRC = []
+List of additional hosts javascript is allowed to be loaded from
+
+CSP_ADDITIONAL_STYLE_SRC = []
+List of additional hosts CSS is allowed to be loaded from
+
+CSP_ADDITIONAL_IMG_SRC = []
+List of additional hosts images is allowed to be loaded from
