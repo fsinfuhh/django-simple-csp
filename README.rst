@@ -19,7 +19,7 @@ Add it to the INSTALLED_APPS settings variable::
         'django.contrib.messages',
         'django.contrib.staticfiles',
         ...
-        'django-simple-csp'
+        'django_simple_csp'
         ...
     ]
 
@@ -78,7 +78,7 @@ Config Values
 -------------
 
 CSP_REPORT_URL = ""
-The URl CSP errors should be reportet to, set to "" if not used, or do not define it.
+The URl CSP errors should be reported to, set to "" if not used, or do not define it.
 
 CSP_REPORT_ONLY = True
 Set the header to just report CSP errors do not enforce the CSP. Defaults to True.
@@ -91,3 +91,12 @@ List of additional hosts CSS is allowed to be loaded from
 
 CSP_ADDITIONAL_IMG_SRC = []
 List of additional hosts images is allowed to be loaded from
+
+
+Upgrades
+-----------
+
+From < 0.3
+~~~~~~~~~~
+
+'django-simple-csp' has to be changed into 'django_simple_csp' in th INSTALLED_APPS in Django settings.py
