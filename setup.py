@@ -4,7 +4,7 @@ import codecs
 from setuptools import setup, find_packages
 
 
-version = '0.3.dev1'
+version = '0.4.dev1'
 
 
 def read(*parts):
@@ -28,7 +28,7 @@ setup(
     description='Django Content Security Policy support.',
     long_description=read('README.rst'),
     author='Nils Rokita, Henning Pridöhl',
-    author_email='github@rokita.it; pridoeh@informatik.uni-hamburg.de',
+    author_email='github@rokita.it',
     maintainer='Nils Rokita',
     maintainer_email='github@rokita.it',
     url='https://github.com/fsinfuhh/django-simple-csp',
