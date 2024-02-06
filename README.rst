@@ -92,6 +92,8 @@ List of additional hosts CSS is allowed to be loaded from
 CSP_ADDITIONAL_IMG_SRC = []
 List of additional hosts images is allowed to be loaded from
 
+CSP_ADDITIONAL_DEFAULT_SRC = []
+List of additional hosts all other resources are allowed to be loaded from
 
 Upgrades
 -----------
