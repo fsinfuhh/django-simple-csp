@@ -31,14 +31,14 @@ class CSPMiddleware:
             policy['script-src'].append("'unsafe-inline'")
             policy['style-src'].append("'unsafe-inline'")
 
-        if settings.CSP_REPORT_URL:
+        if getattr(settings, 'CSP_REPORT_URL', False):
             policy['report-uri'] = [settings.CSP_REPORT_URL]
 
         policy_strings = []
         for kind, allowed in policy.items():
             policy_strings.append('{} {}'.format(kind, ' '.join(allowed)))
 
-        if settings.CSP_REPORT_ONLY:
+        if getattr(settings, 'CSP_REPORT_ONLY', False):
             response['Content-Security-Policy-Report-Only'] = '; '.join(policy_strings)
         else:
             response['Content-Security-Policy'] = '; '.join(policy_strings)
